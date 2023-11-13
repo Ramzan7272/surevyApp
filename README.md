@@ -7,7 +7,7 @@
 
 ### 1. Clone the repository
 ```
-git clone 'https://github.com/gmohmad/surevyApp.git'
+git clone 'https://github.com/gmohmad/surveyApp.git'
 ```
 ### 2. Avtivate venv
 ```
