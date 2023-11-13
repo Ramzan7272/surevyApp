@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+
+        <form method="post">
+            {% csrf_token %}
+            <h1>Вы: мужчина / женщина?</h1>
+
+            <input type="radio" name="choice" id="choice1" value="A">
+            <label for="choice1">Мужчина</label><br>
+
+            <input type="radio" name="choice" id="choice2" value="B">
+            <label for="choice2">Женщина</label><br>
+
+            <input type="submit" value="Start the test">
+            
+        </form>
+    </div>
+</body>
+</html>

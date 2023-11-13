@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        {% for question in page_obj %}
+        <h1>{{ question.question_text }}</h1>
+        <form id="myForm" method="post" action="{% url 'questions' question.id answerId %}?page={% if page_obj.has_next %}{{ page_obj.next_page_number }}{%else%}1{%endif%}">
+            {% csrf_token %}
+
+            {% for choice in question.choice_set.all %}
+            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.value }}">
+            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+            {% endfor %}
+            <input type="submit" value="Next">
+        </form>
+        {% endfor %}
+    </div>
+
+    <script>
+        document.getElementById("myForm").onsubmit = function() {
+        var radios = document.getElementsByName("choice");
+        var formValid = false;
+
+        var i = 0;
+        while (!formValid && i < radios.length) {
+            if (radios[i].checked) formValid = true;
+            i++;        
+        }
+
+        if (!formValid) alert("Пожалуйста, выберите один из вариантов.");
+        return formValid;
+    };
+    </script>
+</body>
+</html>
